@@ -44,7 +44,7 @@ async function sendQuestion(name, question) {
   try {
     const response = await fetch(scriptUrl, {
       method: "POST",
-      body: JSON.stringify({ question: `${question}` }),
+      body: JSON.stringify({ question: `${name}: ${question}` }),
     });
     if (response.ok) {
       alert(
