@@ -77,5 +77,25 @@ document
     document.getElementById("question-form").reset();
   });
 
+// Function to filter Q&A based on search query
+function filterQA(query) {
+  const qaList = document.getElementById("qa-list").children;
+  query = query.toLowerCase();
+
+  for (let i = 0; i < qaList.length; i++) {
+    const question = qaList[i].querySelector("p").textContent.toLowerCase();
+    if (question.includes(query)) {
+      qaList[i].style.display = "block"; // Show matching Q&A
+    } else {
+      qaList[i].style.display = "none"; // Hide non-matching Q&A
+    }
+  }
+}
+
+// Add event listener for search input
+document.getElementById("search-input").addEventListener("input", function (e) {
+  filterQA(e.target.value);
+});
+
 // Fetch Q&A on page load
 fetchQAList();
